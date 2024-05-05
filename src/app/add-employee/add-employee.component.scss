@@ -1,0 +1,38 @@
+input{
+    border: 0;
+    width: 100%;
+}
+
+input:focus{
+    outline: none;
+}
+select{
+    border: 0;
+    width: 100%;
+}
+
+select:focus{
+    outline: none;
+}
+.date-container {
+    display: flex;
+    justify-content: space-between;
+    width: 400px; 
+    height: 50%;
+  }
+
+  .date-container label {
+    flex: 1;
+    text-align: center;
+  }
+
+  .date-container input[type="date"] {
+    flex: 1;
+  }
+  .date-container input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(70%) sepia(80%) saturate(5000%) hue-rotate(200deg) brightness(80%) contrast(100%);
+  }
+  .arrow {
+    font-size: 20px;
+    margin-top: 18px;
+  }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,18 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'employee-app';
+export class AppComponent implements OnInit{
+  
+  currentRouteName: string = '';
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.currentRouteName = this.activatedRoute.snapshot.firstChild?.data['name'] ;
+    });
+  }
+
 }

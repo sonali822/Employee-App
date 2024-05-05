@@ -1,0 +1,34 @@
+
+
+
+<img src="../../assets/Frame_19726.png" height="50%" width="50%" alt="Center Image" style="position: fixed; top: 50%;left: 50%; transform: translate(-50%,-50%);" *ngIf="currentEmployee.length <= 0 && previousEmployee.length <= 0">
+
+<div  style="padding:10px" *ngIf="currentEmployee.length > 0 || previousEmployee.length > 0">
+
+    <div class="current-previous-employees">Current Employees</div>
+    <div *ngFor="let employee of currentEmployee; let i = index" style="padding: 10px;" style="display: flex; justify-content: space-between; align-items: center;" 
+    >
+        <div >
+        <h4><b>{{employee['name']}}</b></h4>
+        <p>{{employee['position']}}</p>
+        <p><span>{{employee['date']['from']}}</span>  - <span>{{employee['date']['to']}}</span></p>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center;background-color: red; color: white; width: 100px;height: 40px;" (click)="onDeleteEmployeeButton(i)">Delete</div> 
+    </div>
+    <div class="current-previous-employees">Previous Employees</div>
+
+    <div *ngFor="let employee of previousEmployee; let i = index" style="padding: 10px;" style="display: flex; justify-content: space-between; align-items: center;" 
+    >
+        <div >
+        <p><b>{{employee['name']}}</b></p>
+        <p>{{employee['position']}}</p>
+        <p><span>{{employee['date']['from']}}</span>  - <span>{{employee['date']['to']}}</span></p>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center;background-color: grey; color: white; width: 100px;height: 40px;" (click)="onUndoEmployeeButton(i)">Undo</div> 
+    </div>
+
+</div>
+    
+<button style="position: fixed; top: 90%;left: 90%; font-size: 32px;" (click)="goToAddEmployee()" >+</button>
+
+
